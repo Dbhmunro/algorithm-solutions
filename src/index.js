@@ -19,3 +19,38 @@ var twoSum = function(numbers, target) {
     
     return false
 };
+
+
+// Sorted Squares problem
+// https://leetcode.com/problems/squares-of-a-sorted-array/
+// Using two(three) pointer approach
+
+var sortedSquares = function(nums) {
+    let leftPointer = 0
+    let rightPointer = nums.length - 1
+    const results = []
+    let resultsPointer = nums.length - 1
+    
+    while (resultsPointer >= 0){
+        let leftPointerSquare = nums[leftPointer]**2
+        let rightPointerSquare = nums[rightPointer]**2
+        
+        if (leftPointerSquare > rightPointerSquare) {
+            results[resultsPointer] = leftPointerSquare
+            leftPointer++
+        } else {
+            results[resultsPointer] = rightPointerSquare
+            rightPointer--
+        }
+        resultsPointer--
+        
+//         condensed lines of code example
+
+//         let largerSquare = Math.max(leftPointerSquare, rightPointerSquare)
+//         results[resultsPointer] = largerSquare
+//         resultsPointer--
+//         largerSquare === leftPointerSquare ? leftPointer++ : rightPointer--
+    }
+    
+    return results
+};
